@@ -1,0 +1,29 @@
+server:
+  port: 8761
+
+eureka:
+  server:
+    responseCacheUpdateIntervalMs: 30000
+    responseCacheAutoExpirationInSeconds: 180
+    eviction-interval-timer-in-ms: 30000
+  #    enable-self-preservation: false
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+spring:
+  application:
+    name: demo-eureka-server
+  freemarker:
+    template-loader-path: classpath:/templates/
+    prefer-file-system-access: false
+
+logging:
+  level:
+    root : info
+  path : /StudyDemo/logs/
+

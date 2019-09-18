@@ -1,0 +1,64 @@
+spring:
+  application:
+    name: demo-zuul
+
+server:
+  port: 8763
+hystrix:
+  threadpool:
+    default:
+      #并发执行的最大线程数，默认10
+      coreSize: 300
+      # 如该值为-1，默认-1，那么使用的是SynchronousQueue，否则使用的是LinkedBlockingQueue。注意，修改MQ的类型需要重启。例如从-1修改为100，需要重启，因为使用的Queue类型发生了变化
+      maxQueueSize: 200
+      #即使maxQueueSize没有达到，达到queueSizeRejectionThreshold该值后，请求也会被拒绝。因为maxQueueSize不能被动态修改，这个参数将允许我们动态设置该值
+      queueSizeRejectionThreshold: 150
+  command:
+    default:
+      circuitBreaker:
+        requestVolumeThreshold: 50
+      execution:
+        #设置HystrixCommand的执行是否有超时限制。
+        timeout:
+          enabled: true
+        #hystrix的隔离策略|(THREAD（线程隔离）/SEMAPHORE（信号量隔离）)
+        isolation:
+          strategy: THREAD
+          #HystrixCommand执行方法允许的最大请求数。
+          semaphore:
+            maxConcurrentRequests: 1000
+          thread:
+            #设置服务熔断超时时间[默认1s]
+            timeoutInMilliseconds: 15000
+ribbon:
+  ReadTimeout: 120000
+  ConnectTimeout: 120000
+  eureka:
+    enabled: true
+zuul:
+  #zuul的超时时间配置
+  host:
+    socket-timeout-millis: 1000000
+    connect-timeout-millis: 1000000
+  ignoredServices: "*"
+  # 定义路由规则
+  routes:
+    demo-facade:
+      path: /v1.0/facade/**
+      stripPrefix: false
+      serviceId: demo-facade
+#    demo-service-hi:
+#      path: /v1.0/shield/**
+#      stripPrefix: false
+#      serviceId: demo-service-hi
+#    sso:
+#      path: /v1.0/sso/**
+#      stripPrefix: false
+#      serviceId: sso
+ipaddress: 192.168.1.35,192.168.1.14,127.0.0.1,192.168.3.110,172.17.100.15,101.86.132.131,101.86.132.101,192.168.0.104,192.168.0.105
+#sso:
+#  logoutPath: /v1.0/facade/applogout
+#  redisAddress: redis://106.14.33.163:6379、
+#  #1: 发版   2: 未发版
+#  isRelease: 2
+#  releaseNotification: "产品正在升级，请稍后再试~"

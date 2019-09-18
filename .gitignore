@@ -1,0 +1,10 @@
+/target/
+/.classpath
+/.project
+*.iml
+.idea/
+*/target
+*.txlcn
+logs
+LOG_HOME_IS_UNDEFINED/
+

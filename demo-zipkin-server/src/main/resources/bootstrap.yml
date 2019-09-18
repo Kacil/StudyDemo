@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: demo-zipkin-server
+server:
+  port: 8762
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+#zipkin启动报错无法访问的解决方法
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false
+
+logging:
+   level:
+     root: info
+   path: /StudyDemo/logs/

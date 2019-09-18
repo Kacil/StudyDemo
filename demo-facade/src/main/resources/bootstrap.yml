@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: demo-facade
+  zipkin:
+    enabled: true
+    base-url: http://localhost:8762/
+    # 关闭服务发现，否则Spring Cloud会把zipkin的url当做服务名称
+    discoveryClientEnabled: false
+    locator:
+      discovery:
+        enabled: true
+    sender:
+      type: web
+  sleuth:
+    web:
+      client:
+        enabled: true
+    sampler:
+      #默认的采样比例为: 0.1(即10%)。不过我们可以通过spring.sleuth.sampler.percentage来设置，所设置的值介于0.0到1.0之间，1.0则表示全部采集
+      percentage: 1
+  cloud:
+    config:
+      uri: http://localhost:8989/
+      name: demo-facade
+      label: master
+      profile: dev
+      discovery:
+        enabled: true
+        serviceId: demo-config-server
+    rabbitmq:                                #本地环境不需要配置mq
+      host: localhost
+      port: 5672
+      username: guest
+      password: guest
+
+server:
+  port: 9872
+
+security:
+  basic:
+    enabled: false
+
+logging:
+  level:
+    root : info
+  path : /StudyDemo/logs/

@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: demo-config-server
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    config:
+      label: master
+      server:
+        git:
+          uri: https://gitee.com/a_kang/demo-config.git
+          search-paths: respo
+          username: 
+          password: 
+          force-pull: true
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+
+server:
+  port: 8989
+#config自动刷新
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        #http://localhost:8787/actuator/bus-refresh
+    health:
+      show-details: always
+  security:
+    enabled: false
+security:
+  basic:
+    enabled: false
+#encrypt:
+#  key: studydemo
+
+logging:
+  level:
+    root : info
+  path : /StudyDemo/logs/
