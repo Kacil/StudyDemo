@@ -25,7 +25,13 @@ server:
   port: 8989
 #config自动刷新
 eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+    prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 15
+    lease-renewal-interval-in-seconds: 5
   client:
+    registryFetchIntervalSeconds: 5
     service-url:
       defaultZone: http://localhost:8761/eureka/
 management:

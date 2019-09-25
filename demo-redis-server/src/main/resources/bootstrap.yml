@@ -1,0 +1,24 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8989/
+      name: demo-redis-server
+      label: master
+      profile: dev
+      discovery:
+        enabled: true
+        serviceId: demo-config-server
+    rabbitmq:                                #本地环境不需要配置mq
+      host: localhost
+      port: 5672
+      username: guest
+      password: guest
+
+server:
+  max-http-header-size: 10000000
+
+logging:
+  level:
+    root : info
+  path : /StudyDemo/logs/
+

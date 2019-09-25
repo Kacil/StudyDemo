@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<body>
+<center>
+    <h1>请登录</h1>
+    <p>用户名:admin 密码:admin</p>
+    <form method="post">
+        <span>用户名：</span><input type="text" name="userName" id="userName"/>
+        <span>密码：</span><input type="password" name="password" id="password"/>
+        <input id="but" type="submit" value="提交">
+    </form>
+</center>
+
+<script type="text/javascript">
+    $(function(){
+        $("#but").click(function(){
+            alert($("#userName").val()+"==="+$("#password").val());
+            if($("#userName").val() != '' || $("#password").val() != ''){
+                $.ajax({
+                    type:"POST",
+                    url:"http://127.0.0.1/v1.0/facade/user/login",
+                    //data:$("#form1").serialize(),
+                    dataType: "json",
+                    data: {
+                        userName: $("#userName").val(),
+                        password: $("#password").val()
+                    },
+                    success: function(data){
+                        //alert("后台获取数据！"+data);
+                        if(data.code=="000000"){
+                            window.location.replace("http://127.0.0.1/v1.0/facade/user/loginsuccess");
+                        }else{
+                            alert(data.msg);
+                        }
+                    }
+                });
+            }else{
+                alert("用户名和密码不能为空！");
+            }
+        })
+
+    });
+</script>
+</body>
+</html>

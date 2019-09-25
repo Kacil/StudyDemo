@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.zxk</groupId>
+        <artifactId>demo-dependencies</artifactId>
+        <version>1.0.0-RELEASE</version>
+        <relativePath>../demo-dependencies/pom.xml</relativePath> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.zxk</groupId>
+    <artifactId>demo-common-service</artifactId>
+    <name>demo-common-service</name>
+    <packaging>jar</packaging>
+    <description>Demo project for Spring Boot</description>
+    <!-- 常用类打jar包，供其他服务调用 -->
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <!-- feign Begin -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <!-- feign End -->
+        <!-- jpa Begin -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <!-- jpa End -->
+    </dependencies>
+
+</project>

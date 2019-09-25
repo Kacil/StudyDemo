@@ -25,7 +25,7 @@ public class InternalURIAccessFilter extends ZuulFilter implements InitializingB
 
     private static final String[][] preAuthenticationIgnoreUris = {
             {"/v1.0/facade/hi", "*"},
-            {"/v1.0/facade/hi", "*"}
+            {"/v1.0/facade/user/", "*"}
     };
 
     private static String[] deplay = null;

@@ -5,6 +5,7 @@
 .idea/
 */target
 *.txlcn
+.gitignore
 logs
 LOG_HOME_IS_UNDEFINED/
 

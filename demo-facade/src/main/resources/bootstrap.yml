@@ -1,6 +1,13 @@
 spring:
   application:
     name: demo-facade
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
   zipkin:
     enabled: true
     base-url: http://localhost:8762/

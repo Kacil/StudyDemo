@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: demo-sso-core
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+server:
+  port: 9874
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+logging:
+   level:
+     root: info
+   path: /StudyDemo/logs/
