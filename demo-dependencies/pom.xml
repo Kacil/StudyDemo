@@ -42,7 +42,7 @@
         <marvel-sso-core.version>1.0.0-RELEASE</marvel-sso-core.version>
         <fen.version>1.4.6.RELEASE</fen.version>
         <rabbitmq.version>2.0.1.RELEASE</rabbitmq.version>
-        <jnt.version>4.13-beta-3</jnt.version>
+        <jnt.version>4.13.1</jnt.version>
         <test.version>5.1.5.RELEASE</test.version>
         <fast.version>1.2.58</fast.version>
         <docker.image.prefix>fugui.marvel</docker.image.prefix>
